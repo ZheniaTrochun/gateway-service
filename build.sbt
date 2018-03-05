@@ -1,6 +1,6 @@
 
-lazy val akkaHttpVersion = "10.0.11"
-lazy val akkaVersion    = "2.5.11"
+lazy val akkaHttpVersion = "10.0.9"
+lazy val akkaVersion    = "2.4.19"
 
 // Needed for Heroku deployment, can be removed
 enablePlugins(JavaAppPackaging)
