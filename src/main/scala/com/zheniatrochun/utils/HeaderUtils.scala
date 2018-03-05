@@ -10,8 +10,8 @@ trait HeaderUtils {
       headers.filterNot(_.is(header.lowercaseName))
     }
 
-    def nonEmptyHeaders = {
-      headers.filterNot(_.value.isEmpty)
+    def nonEmptyRequestHeaders = {
+      headers.filterNot(header => header.value.isEmpty || header.name == "Timeout-Access")
     }
   }
 }

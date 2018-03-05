@@ -1,0 +1,1 @@
+web: target/universal/stage/bin/gateway-service -Dhttp.port=${PORT}
