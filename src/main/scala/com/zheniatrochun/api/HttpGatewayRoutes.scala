@@ -7,5 +7,5 @@ import com.zheniatrochun.directives.GatewayTargetDirective
 
 class HttpGatewayRoutes(implicit val system: ActorSystem, implicit val mat: Materializer) extends GatewayTargetDirective {
 
-  val gatewayRoutes: Route = (ctx: RequestContext) => serviceRouteForRequest("api")(_.routes)(ctx)
+  val routes: Route = (ctx: RequestContext) => serviceRouteForRequest("api")(_.routes)(ctx)
 }

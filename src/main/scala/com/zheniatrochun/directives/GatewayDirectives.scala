@@ -6,7 +6,6 @@ import akka.http.scaladsl.model.Uri.Path.{Empty, Segment, Slash}
 import akka.http.scaladsl.server.PathMatcher.{Matched, Matching, Unmatched}
 import akka.http.scaladsl.server.{Directive, Directives, PathMatcher1}
 import akka.stream.Materializer
-import com.typesafe.config.Config
 import com.zheniatrochun.client.GatewayTargetClient
 import com.zheniatrochun.config.{AppConfig, Configs}
 
@@ -37,7 +36,6 @@ case class GatewayPathMatcher(config: Configs, prefix: String)(implicit val syst
   private def matchRemainingPathToGatewayTarget(path: Path): Matching[Tuple1[GatewayTargetClient]] = path match {
     case Slash(tail) => matchRemainingPathToGatewayTarget(tail)
     case s @ Segment(head, _) =>
-      println(head)
       Option(config.getString(head))
         .map(str => Matched(s, Tuple1(new GatewayTargetClient(config.getString(head)))))
         .getOrElse(Unmatched)
