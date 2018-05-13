@@ -16,7 +16,8 @@ private[config] class RemoteConfigManager(val config: Config) {
   def createDummyConfig(): Unit = {
     val conf = Map("auth" -> "my-auth-service.herokuapp.com",
       "users" -> "my-data-service.herokuapp.com",
-      "bills" -> "my-data-service.herokuapp.com")
+      "bills" -> "my-data-service.herokuapp.com",
+      "wallets" -> "my-data-service.herokuapp.com")
 
     redisClient.hmset("gateway-service-config", conf)
   }
