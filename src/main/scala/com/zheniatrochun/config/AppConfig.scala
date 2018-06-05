@@ -15,11 +15,12 @@ trait AppConfig {
 
 class Configs {
   private val config = ConfigFactory.load()
-  private val remoteConfigManager = new RemoteConfigManager(config)
-  private var remoteConfigCache: Map[String, String] = remoteConfigManager.getRemoteConfig()
+//  private val remoteConfigManager = new RemoteConfigManager(config)
+//  private var remoteConfigCache: Map[String, String] = remoteConfigManager.getRemoteConfig()
 
   def getString(key: String): String = {
-    remoteConfigCache.getOrElse(key, config.getString(key))
+//    remoteConfigCache.getOrElse(key, config.getString(key))
+    config.getString(key)
   }
 
   def getInt(key: String): Int = {
@@ -31,16 +32,16 @@ class Configs {
   }
 
   def update(): Unit = {
-    remoteConfigCache = remoteConfigManager.getRemoteConfig()
+//    remoteConfigCache = remoteConfigManager.getRemoteConfig()
   }
 
   def createDummyConfig(): Unit = {
-    remoteConfigManager.createDummyConfig()
+//    remoteConfigManager.createDummyConfig()
     update()
   }
 
   def addRemoteConfig(entry: (String, String)): Unit = {
-    remoteConfigManager.setConfig(entry)
+//    remoteConfigManager.setConfig(entry)
     update()
   }
 }
